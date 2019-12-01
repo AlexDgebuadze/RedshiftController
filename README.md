@@ -1,2 +1,2 @@
 # RedshiftController
-redshift GUI for linux 
+little redshift GUI for linux 
