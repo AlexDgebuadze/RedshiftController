@@ -8,6 +8,8 @@ package redshiftcontroller.OOP;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.control.Alert;
 /**
  *
@@ -16,18 +18,21 @@ import javafx.scene.control.Alert;
 public abstract class RunCommand {
     
     public static void RunMyCommandExec(String command) throws IOException, InterruptedException{
-       
-        Process proc = Runtime.getRuntime().exec(command);
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-
-        String line = "";
-        while((line = reader.readLine()) != null) {
-            System.out.print(line + "\n");
-        }
-
-        proc.waitFor();   
+      try {
+             Process pr = Runtime.getRuntime().exec(command);
+         } catch (IOException ex) {
+             Alert alert = new Alert(Alert.AlertType.ERROR);
+             alert.setHeaderText("Error , problem with command");
+             alert.setContentText("something went wrong with running command : " + command);
+         } 
     }
+    
+    
+    
+    
+    
+    
+    
    public static void RunCommandpb(String Terminal,String Command) throws IOException{
     
          ProcessBuilder processBuilder = new ProcessBuilder();
